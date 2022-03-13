@@ -25,15 +25,18 @@ public class HomeActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_home);
 
+
+        conectarComViewport();
+        receberPacote();
+        apresentarNome();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle(pacote.getString("username"));
 
-        conectarComViewport();
-        receberPacote();
-        apresentarNome();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
