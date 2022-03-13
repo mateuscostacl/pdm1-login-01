@@ -1,5 +1,8 @@
 package com.example.pdm1_login_01.data;
 
+import android.app.Service;
+import android.util.Log;
+
 import com.example.pdm1_login_01.data.model.LoggedInUser;
 
 import java.io.IOException;
@@ -8,6 +11,10 @@ import java.io.IOException;
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
 public class LoginDataSource {
+
+    public static final String username = "Mateus";
+    public static final String usermail = "mateus@mateus.com";
+    public static final String password = "123456";
 
     public Result<LoggedInUser> login(String username, String password) {
 
@@ -29,11 +36,11 @@ public class LoginDataSource {
     }
 
     private Boolean verificaUsuario(String username, String password) {
-        if (username.equalsIgnoreCase("Mateus")
-                || username.equalsIgnoreCase("mateus@mateus.com")
-                && password.equals("123456")) {
-            return true;
-        }
+        if (username.equalsIgnoreCase(LoginDataSource.username)
+                || username.equalsIgnoreCase(LoginDataSource.usermail))
+            if (password.equals(LoginDataSource.password)) {
+                return true;
+            }
         return false;
     }
 }

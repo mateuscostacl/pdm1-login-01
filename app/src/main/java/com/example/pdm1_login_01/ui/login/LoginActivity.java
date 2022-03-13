@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pdm1_login_01.R;
+import com.example.pdm1_login_01.data.LoginDataSource;
 import com.example.pdm1_login_01.ui.home.HomeActivity;
 import com.example.pdm1_login_01.ui.login.LoginViewModel;
 import com.example.pdm1_login_01.ui.login.LoginViewModelFactory;
@@ -77,10 +78,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
+                    chamarHomeActivity();
                 }
                 setResult(Activity.RESULT_OK);
 
-                enviarPacote();
 
                 //Complete and destroy login activity once successful
 //                finish();
@@ -138,11 +139,13 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
-
-    private void enviarPacote() {
+    private void chamarHomeActivity() {
         Intent i = new Intent(getApplicationContext(), HomeActivity.class);
 
-//        i.putExtras(pacote);
+        Bundle pacote = new Bundle();
+        pacote.putString("username", LoginDataSource.username);
+
+        i.putExtras(pacote);
         startActivity(i);
     }
 }
