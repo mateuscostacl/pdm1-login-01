@@ -9,6 +9,10 @@ import java.io.IOException;
  */
 public class LoginDataSource {
 
+    public static final String username = "Mateus";
+    public static final String usermail = "mateus@mateus.com";
+    public static final String password = "123456";
+
     public Result<LoggedInUser> login(String username, String password) {
 
         try {
@@ -29,11 +33,11 @@ public class LoginDataSource {
     }
 
     private Boolean verificaUsuario(String username, String password) {
-        if (username.equalsIgnoreCase("Mateus")
-                || username.equalsIgnoreCase("mateus@mateus.com")
-                && password.equals("123456")) {
-            return true;
-        }
+        if (username.equalsIgnoreCase(LoginDataSource.username)
+                || username.equalsIgnoreCase(LoginDataSource.usermail))
+            if (password.equals(LoginDataSource.password)) {
+                return true;
+            }
         return false;
     }
 }
